@@ -1,0 +1,17 @@
+table, tr, td {
+    border: solid 1px black;
+    /* padding: 4px; */
+}
+
+td {
+    padding: 4px;
+}
+
+table a {
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    background-color: aqua;
+    border-radius: 4px;
+    padding: 4px;
+}
