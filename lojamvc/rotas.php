@@ -26,6 +26,10 @@
     $route->get("/", [inicioController::class, "inicio"]);
     $route->get("/categorias", [categoriaController::class, "listar"]);
     $route->get("/inserir_categoria", [categoriaController::class, "inserir"]);
+    $route->get("/excluir_categoria", [categoriaController::class, "excluir"]);
+    $route->get("/editar_categoria", [categoriaController::class, "editar"]);
+
     $route->post("/inserir_categoria", [categoriaController::class, "inserir"]);
+    $route->post("/editar_categoria", [categoriaController::class, "editar"]);
 
 ?>

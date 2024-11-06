@@ -28,11 +28,33 @@
         }
 
         public function editar() {
-            require_once "views/categoria/editar.php";
+            $msg = "";
+            if($_POST) {
+                if(empty($_POST['descritivo'])) {
+                    $msg = "Preencha o descritivo";
+                } else {
+                    $categoria = new Categorias($_POST["id_categoria"], $_POST["descritivo"]);
+                    $categoriaDAO = new CategoriasDAO();
+                    $categoriaDAO->alterar_categoria($categoria);
+                    header("location:/lojamvc/categorias?msg=$retorno");
+                }
+            }
+            if(isset($_GET['id'])) {
+                $categoria = new Categorias($_GET["id"]);
+                $categoriaDAO = new CategoriasDAO();
+                $retorno = $categoriaDAO->buscar_uma_categoria($categoria);
+            }
+            require_once "views/editar_categoria.php";
+
         }
 
         public function excluir() {
-            require_once "views/categoria/excluir.php";
+            if(isset($_GET["id"])) {
+                $categoria = new Categorias($_GET["id"]);
+                $categoriaDAO = new CategoriasDAO();
+                $retorno = $categoriaDAO->excluir($categoria);
+                header("location:/lojamvc/categorias?msg=$retorno");
+            }
         }
     }
 ?>
